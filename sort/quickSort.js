@@ -37,3 +37,20 @@ function quickSort(arr) {
   partition(arr, 0, len - 1);
   return arr;
 }
+
+function quickSort2(arr) {
+  let len = arr.length;
+  if (len <= 1) return arr;
+  let pivotIndex = randomPivotIndex(0, len - 1);
+  let pivot = arr.splice(pivotIndex, 1)[0];
+  let left = [];
+  let right = [];
+  arr.forEach((item) => {
+    if (item <= pivot) {
+      left.push(item);
+    } else {
+      right.push(item);
+    }
+  });
+  return partition2(left).concat(pivot, partition2(right));
+}
