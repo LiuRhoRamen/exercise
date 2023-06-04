@@ -42,7 +42,7 @@ function quickSort2(arr) {
   let len = arr.length;
   if (len <= 1) return arr;
   let pivotIndex = randomPivotIndex(0, len - 1);
-  let pivot = arr.splice(pivotIndex, 1)[0];
+  let pivot = arr.splice(pivotIndex, 1)[0]; // 必须去掉基准，否则可能死循环
   let left = [];
   let right = [];
   arr.forEach((item) => {
@@ -52,5 +52,5 @@ function quickSort2(arr) {
       right.push(item);
     }
   });
-  return partition2(left).concat(pivot, partition2(right));
+  return quickSort2(left).concat(pivot, quickSort2(right));
 }
