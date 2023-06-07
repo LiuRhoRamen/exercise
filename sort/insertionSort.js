@@ -7,6 +7,7 @@ function insertionSort(arr) {
     for (let j = i - 1; j >= 0; j--) {
       if (arr[j] > current) {
         arr[j + 1] = arr[j]; // 往后移
+        arr[j] = current;
       } else {
         arr[j + 1] = current; // 插入并结束遍历
         break;
